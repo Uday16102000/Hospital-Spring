@@ -46,5 +46,25 @@ private HospitalRepo repo;
 	return null;
 	
 	}
-
-}
+	public Hospital fetchHospitalByName(String name) {
+		// TODO Auto-generated method stub
+		
+		Hospital hospital= repo.fetchHospitalByName(name);
+		if(hospital!=null) {
+			return hospital;
+		}else {
+		return null;
+	}}
+//	public Hospital fetchHospitalByName(String name) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+   public Hospital findHospitalById(int id) {
+	Optional<Hospital> hospital=  repo.findById(id);
+	if(hospital!=null)
+	{
+		return hospital.get();
+	}else {
+	return null;
+	}
+   }}

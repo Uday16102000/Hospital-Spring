@@ -55,5 +55,15 @@ private HospitalDao dao;
 			throw new IdNotFoundException("Sorry not deleted because value is null");
 		}
 	}
+	public ResponseEntity<ResponseStructure<Hospital>> fetchHospitalByName(String name) {
+	Hospital hospital=dao.fetchHospitalByName(name);
+	ResponseStructure<Hospital> structure= new ResponseStructure<Hospital>();
+	
+	structure.setMessage("Fetched successfully by name");
+	structure.setStatus(HttpStatus.FOUND.value());
+	structure.setData(hospital);
+	return new ResponseEntity<ResponseStructure<Hospital>>(structure,HttpStatus.FOUND);
+	
+	}
 
 }

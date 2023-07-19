@@ -2,12 +2,16 @@ package com.jsp.Hospital.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Hospital 
 {
 	@Id
 private int id;
+	@NotNull(message="name should not be null")
+	@NotBlank(message="name should not be blank")
 private String name;
 private String ceo;
 public int getId() {

@@ -36,5 +36,15 @@ public class AddressDao {
 		repo.delete(address);
 		return address;
 	}
+	public Address findAddressById(int addressId) {
+		// TODO Auto-generated method stub
+		Optional<Address> address= repo.findById(addressId);
+		if(address!=null)
+		{
+			return address.get();
+		}else {
+		return null;
+		}
+	}
 
 }

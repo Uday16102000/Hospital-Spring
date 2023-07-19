@@ -1,5 +1,7 @@
 package com.jsp.Hospital.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +21,7 @@ public class HospitalController {
 	@Autowired
 	private HospitalService service;
 	@PostMapping("/saveHospital")
-	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(@RequestBody Hospital hospital){
+	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(@RequestBody @Valid Hospital hospital){
 		return service.saveHospital(hospital);
 		
 	}
@@ -39,5 +41,9 @@ public class HospitalController {
 	@DeleteMapping("/delete")
 	public ResponseEntity<ResponseStructure<Hospital>> deleteHospital(@RequestParam int id){
 		return service.deleteHospital(id);
+	}
+	@GetMapping("/fetchByName")
+	public ResponseEntity<ResponseStructure<Hospital>>  fetchHospitalByName(@RequestParam String name){ 
+		return service.fetchHospitalByName(name);
 	}
 }
